@@ -10,7 +10,7 @@ Sexit(){
 }
 
 
-read -e -p "Lanuch >> " line
+read -e -p "Launch >> " line
 Sexit $line
 
 while true
