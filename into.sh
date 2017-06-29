@@ -12,7 +12,9 @@ Sexit(){
 Help(){
 
 echo "Should include package name, e.g. into echo"
-echo "If you want to change to another package, type: -to packageName"
+echo "[While using into]"
+echo "-to: If you want to change to another package, type: -to packageName"
+echo "cls: to clear the terminal screen"
 
 }
 
