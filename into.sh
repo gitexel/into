@@ -9,8 +9,7 @@ Sexit(){
 
 }
 
-
-read -e -p "Launch >> " line
+line=$1
 Sexit $line
 
 while true
