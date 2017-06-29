@@ -15,7 +15,7 @@ echo "Should include package name, e.g. into echo"
 echo "[While using into]"
 echo "-to: If you want to change to another package, type: -to packageName"
 echo "cls: to clear the terminal screen"
-
+echo "[available operations]: ls, cp, mv, rm, chmod, cat, ps, kill, su, echo"
 }
 
 
@@ -33,15 +33,21 @@ while [[ $# > 0 ]]
     read -r -p "$line >> " after
     set -- $after
 
-    if [ "$1" = "-to" ]
-    then
+    if [ "$1" = "-to" ]; then
         Sexit $2
         line="$2"
-    elif [ "$1" = "cls" ]
-    then
-      clear
+    elif [ "$1" = "cls" ]; then
+    
+	  clear
+    
+    elif [[ "$1" =~ ^("ls"|"cp"|"mv"|"rm"|"chmod"|"cat"|"ps"|"kill"|"su"|"echo")$ ]]; then
+	
+	$after 
+
     else
-      $cat $line $after
+	
+	$cat $line $after
+    
     fi
 
 done
