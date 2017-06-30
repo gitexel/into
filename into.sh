@@ -2,10 +2,6 @@
 Sexit(){
 
   command -v $1 >/dev/null 2>&1 || { echo "Package not found. Aborting." >&2; exit 1; }
-  if [ "$1" = "" ]; then
-    echo "Package not found. Aborting."
-    exit 1;
-  fi
 
 }
 
@@ -16,7 +12,8 @@ Help(){
   echo "-ih: for help"
   echo "-to: If you want to change to another package, type: -to packageName"
   echo "cls: to clear the terminal screen"
-  echo "[available operations]: ls, cp, mv, rm, chmod, cat, ps, kill, su, echo, cd, pwd"
+  echo "[available operations]: ls, cp, mv, rm, chmod, cat, ps, kill, su, echo,\
+   cd, pwd"
 
 }
 
@@ -42,10 +39,13 @@ while [[ $# > 0 ]]
         line="$2"
     elif [ "$1" = "cls" ]; then
         clear
-    elif [[ "$1" =~ ^("ls"|"cp"|"mv"|"rm"|"chmod"|"cat"|"ps"|"kill"|"su"|"echo"|"cd"|"pwd")$ ]]; then
+    elif [[ "$1" =~ ^("ls"|"cp"|"mv"|"rm"|"chmod"|"cat"|"ps"|"kill"|"su"|"echo"\
+    |"cd"|"pwd")$ ]]; then
         $after
     else
-        $line $after
+        tail=" "$after
+        echo $line $tail
+        $line$tail
     fi
 
 done
